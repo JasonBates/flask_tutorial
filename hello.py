@@ -2,15 +2,15 @@
 # hello.py
 import os
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, url_for
 app = Flask(__name__)
 
-@app.route('/hello/<name>')
-@app.route('/hello')
-@app.route('/')
-def hello_world(name=None):
-    return render_template('hello.html', name=name)
-
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    if request.method == "POST":
+        return "User %s has logged in" % request.form['username']
+    else:
+        return render_template('login.html')
 
 if __name__ == '__main__':
     host = os.getenv('IP', '0.0.0.0')
