@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+    <title>{% block title %}{% endblock %} - Company Name</title>
+    {% endblock %}
+</head>
+<body>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class="flashes">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<footer>
+    {% block footer %}
+    <p></p>
+    &copy; Copyright 2015 by <a href="http://www.googl.com">someon else </a>
+    {% endblock %}
+</footer>
+
+</body>
+</html>
